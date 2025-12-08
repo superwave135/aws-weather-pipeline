@@ -1,0 +1,5 @@
+pyspark==3.4.0
+boto3==1.36.18
+python-dotenv==1.0.1
+delta-spark==3.3.0
+awsglue-local-dev==1.0.0

@@ -1,0 +1,23 @@
+{
+    "fields": [
+        {"name": "ref_year", "type": "integer"},
+        {"name": "ref_month", "type": "integer"},
+        {"name": "ref_day", "type": "integer"},
+        {"name": "ref_date", "type": "date"},
+        {"name": "location_id", "type": "integer"},
+        {"name": "forecast_time", "type": "timestamp"},
+        {"name": "temp_c", "type": "double"},
+        {"name": "wind_kph", "type": "double"},
+        {"name": "wind_degree", "type": "integer"},
+        {"name": "pressure_mb", "type": "double"},
+        {"name": "precip_mm", "type": "double"},
+        {"name": "snow_cm", "type": "double"},
+        {"name": "humidity", "type": "integer"},
+        {"name": "uv", "type": "double"},
+        {"name": "cloud", "type": "integer"},
+        {"name": "feelslike_c", "type": "double"},
+        {"name": "chance_of_rain", "type": "integer"},
+        {"name": "chance_of_snow", "type": "integer"}
+    ],
+    "partitionKeys": ["ref_year", "ref_month", "ref_day"]
+  }

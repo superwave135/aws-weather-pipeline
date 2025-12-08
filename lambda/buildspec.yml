@@ -1,0 +1,52 @@
+version: 0.2
+
+env:
+  variables:
+    PROJECT_NAME: "pipeline-weather-data" ## name of project
+    PATH_SCRIPT: "AWS/pipeline-weather-data/lambda" ## path to the code
+    BUCKET_NAME: "weather-datalake-projects-scripts" ## bucket os scripts 
+    LAMBDA_FUNCTION_NAME: "get_api_weather_data_lambda" # Add Lambda function name as variable
+    LAMBDA_RUNTIME: "python3.11"  # Example runtime, adjust as needed
+    LAMBDA_HANDLER: "get-data-api.lambda_handler" # Example handler, adjust as needed
+    LAMBDA_MEMORY_SIZE: 512      # Example memory size in MB
+    LAMBDA_TIMEOUT: 900          # Example timeout in seconds
+    LAMBDA_ROLE: "arn:aws:iam::xxxxxxxxxxxx:role/lambda-execution-role" # Replace with your Lambda execution role ARN
+
+
+phases:
+  install:
+      commands:
+        - echo "Installing necessary tools...."
+        - apt-get update -y
+        - apt-get install -y zip # Install zip utility
+
+  pre_build:
+    commands:
+      - echo "Installing Python dependencies..."
+      - pip install -r $PATH_SCRIPT/requirements.txt -t $PATH_SCRIPT/. # Install dependencies to the directory ($PATH_SCRIPT)
+      - echo "Zipping the folder..."
+      - cd $PATH_SCRIPT
+      - zip -q -r lambda.zip . # Zip the current directory ($PATH_SCRIPT) including dependencies
+      - cd ../../.. #return to root folder
+      - echo $(ls $PATH_SCRIPT) # List directory contents
+
+  build:
+    commands:
+      - echo Uploading the script to S3...
+      - aws s3 cp $PATH_SCRIPT/lambda.zip s3://$BUCKET_NAME/$PROJECT_NAME/lambda/lambda.zip
+
+  post_build: # Add post_build phase to update lambda function
+     commands:
+      - echo "Checking if Lambda function exists..."
+      - FUNCTION_EXISTS=$(aws lambda get-function --function-name $LAMBDA_FUNCTION_NAME --query 'Configuration.FunctionName' --output text 2> /dev/null  || echo "NOT_FOUND")
+      - echo $FUNCTION_EXISTS
+      - if [ "$FUNCTION_EXISTS" = "NOT_FOUND" ]; then
+          echo "Lambda function does not exist, creating...";
+          aws lambda create-function --function-name $LAMBDA_FUNCTION_NAME --runtime $LAMBDA_RUNTIME --role $LAMBDA_ROLE --handler $LAMBDA_HANDLER  --memory $LAMBDA_MEMORY_SIZE --timeout $LAMBDA_TIMEOUT --code="S3Bucket=$BUCKET_NAME,S3Key=$PROJECT_NAME/lambda/lambda.zip";
+        else
+          echo "Lambda function exists, updating code and configuration...";
+          aws lambda update-function-code --function-name $LAMBDA_FUNCTION_NAME --s3-bucket $BUCKET_NAME --s3-key $PROJECT_NAME/lambda/lambda.zip;
+          aws lambda wait function-updated --function-name $LAMBDA_FUNCTION_NAME;
+          aws lambda update-function-configuration --function-name $LAMBDA_FUNCTION_NAME --memory-size $LAMBDA_MEMORY_SIZE --timeout $LAMBDA_TIMEOUT;
+          echo "Lambda function code and configuration updated successfully";
+        fi

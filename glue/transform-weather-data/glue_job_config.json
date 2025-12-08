@@ -1,0 +1,27 @@
+{
+    "Role": "arn:aws:iam::545009864275:role/glue_role",
+    "Command": {
+        "Name": "glueetl",
+        "ScriptLocation": "s3://weather-datalake-projects-scripts/pipeline-weather-data/glue/transform-weather-data/main.py"
+    },
+    "DefaultArguments": {
+        "--TempDir": "s3://weather-datalake-projects-scripts/pipeline-weather-data/tmp/",
+        "--job-bookmark-option": "job-bookmark-enable",
+        "--job-language": "python",
+        "--enable-metrics": "",
+        "--extra-py-files": "s3://weather-datalake-projects-scripts/pipeline-weather-data/glue/transform-weather-data/transformations.py",
+        "--enable-continuous-cloudwatch-log": "true",
+        "--etl-enable-container-telemetry-collection": "true",
+        "--datalake-formats": "iceberg",
+        "--enable-spark-ui": "true",
+        "--enable-auto-scaling": "true"
+    },
+    "ExecutionProperty": {
+        "MaxConcurrentRuns": 2
+    },
+    "MaxRetries": 0,
+    "Timeout": 2880,
+    "WorkerType": "G.1X",
+    "NumberOfWorkers": 3,
+    "GlueVersion": "5.0"
+}

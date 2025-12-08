@@ -1,0 +1,27 @@
+version: 0.2
+
+env:
+  variables:
+    PROJECT_NAME: "pipeline-weather-data"
+    GLUE_JOB_NAME: "transform-weather-data"  
+    BUCKET_NAME: "weather-datalake-projects-scripts"
+    
+phases:
+  pre_build:
+    commands:
+      - echo Uploading the script to S3...
+      - export PATH_SCRIPT="AWS/pipeline-weather-data/glue/$GLUE_JOB_NAME"
+      - aws s3 cp --recursive $PATH_SCRIPT s3://$BUCKET_NAME/$PROJECT_NAME/glue/$GLUE_JOB_NAME
+
+  build:
+    commands:
+      - echo Checking if AWS Glue job exists...
+      - export GLUE_JOB_CONFIG="$PATH_SCRIPT/glue_job_config.json"
+      - JOB_EXISTS=$(aws glue get-job --job-name $GLUE_JOB_NAME 2>/dev/null || echo "NOT_FOUND")
+      - if [ "$JOB_EXISTS" = "NOT_FOUND" ]; then
+          echo Glue job not found. Creating a new job...;
+          aws glue create-job --name $GLUE_JOB_NAME --cli-input-json file://$GLUE_JOB_CONFIG;
+        else
+          echo Glue job exists. Updating the job...;
+          aws glue update-job --job-name $GLUE_JOB_NAME --job-update file://$GLUE_JOB_CONFIG;
+        fi

@@ -1,0 +1,3 @@
+apache-airflow[amazon]
+awswrangler==3.9.1
+pandas
