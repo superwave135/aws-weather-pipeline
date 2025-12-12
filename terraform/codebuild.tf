@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------------------
-# CodeBuild Project for Lambda Deployment
+# CodeBuild Project for Lambda Deployment ### to update necessary vars' values 12 Dec 2025
 # ----------------------------------------------------------------------------------
 resource "aws_codebuild_project" "deploy_lambda_pipeline_weather_data" {
     name          = "deploy-lambda-pipeline-weather-data"
