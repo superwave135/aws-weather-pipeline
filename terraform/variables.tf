@@ -1,7 +1,7 @@
 variable "github_owner" {
   type        = string
   description = "GitHub repository owner (username or organization)"
-  default     = "geekytan"
+  default     = "superwave135"  // not geekytan
 }
 
 variable "github_repo" {
