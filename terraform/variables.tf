@@ -1,25 +1,25 @@
 variable "github_owner" {
   type        = string
   description = "GitHub repository owner (username or organization)"
-  default     = "claudiocmm"
+  default     = "geekytan"
 }
 
 variable "github_repo" {
   type        = string
   description = "GitHub repository name"
-  default     = "data_engineering_projects_temp"
+  default     = "aws-weather-pipeline"  // Replaced with repo name
 }
 
 variable "account_id" {
   type        = string
   description = "Account Id AWS"
-  default     = "xxxxxxxxx" // Replace with your account id
+  default     = "881786084229" // Replaced with account id
 }
 
 variable "region" {
   type        = string
   description = "Region AWS"
-  default     = "us-east-1"
+  default     = "ap-southeast-1"
 }
 
 variable "lambda_function_name" {

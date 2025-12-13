@@ -1,5 +1,5 @@
 provider "aws" {
-  region  = "us-east-1" # Change this to your desired region
+  region  = "ap-southeast-1" # Changed to singapore region
 #   profile = "dev"
 }
 
