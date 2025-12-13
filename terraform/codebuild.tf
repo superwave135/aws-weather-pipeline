@@ -19,7 +19,7 @@ resource "aws_codebuild_project" "deploy_lambda_pipeline_weather_data" {
         privileged_mode             = false
         environment_variable {
             name  = "AWS_REGION"
-            value = "us-east-1" # Replace with your AWS region
+            value = var.region  # Better: use variable for consistency
         }
     }
 
@@ -79,7 +79,7 @@ resource "aws_codebuild_project" "deploy_glue_job_transform_weather_data" {
         privileged_mode             = false
         environment_variable {
             name  = "AWS_REGION"
-            value = "us-east-1" # Replace with your AWS region
+            value = var.region  # Better: use variable for consistency
         }
     }
 
