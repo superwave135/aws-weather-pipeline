@@ -194,7 +194,7 @@ def lambda_handler(event, context): # Keep lambda_handler synchronous
 if __name__ == "__main__": # Example of local execution
     event_example = {
         "weather_data_type_extraction": "actual",
-        "api_token": "8b8c4f3c02be4c40964170107252302",
+        "api_token": "ca7fd84867944b67bd685355251512",
         "batch_id": 1
     }
     context_example = None

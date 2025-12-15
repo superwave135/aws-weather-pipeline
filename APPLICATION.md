@@ -1,4 +1,6 @@
-AWS/pipeline-weather-data/
+# Project directory on local.
+
+pipeline-weather-data/
 │
 ├── README.md
 ├── airflow/
@@ -42,6 +44,7 @@ AWS/pipeline-weather-data/
     ├── s3.tf
     └── variables.tf
 
+Wait for my instruction before reply!
 
 * ARCHITECTURE *
 

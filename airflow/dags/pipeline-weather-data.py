@@ -281,7 +281,7 @@ with DAG(
                     qualifier='$LATEST',
                     payload =json.dumps({
                             'weather_data_type_extraction': weather_data_type_extraction,
-                            'api_token': '910626650f5b45fe8d520714251103', #replace with your weather api key
+                            'api_token': 'ca7fd84867944b67bd685355251512', #replace with your weather api key  
                             'batch_id': batch_id
                     }),
                     botocore_config={"retries":{"max_attempts":0},"connect_timeout": 900,"read_timeout": 900,"tcp_keepalive": True},
