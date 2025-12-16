@@ -34,7 +34,6 @@ variable "pipeline_name" {
   default     = "pipeline-weather-data"
 }
 
-
 ///////// SNOWFLAKE VARIABLES CONNECTIONS /////////////////
 
 variable "aws_iam_user_arn_by_snowflake" {
@@ -46,11 +45,11 @@ variable "aws_iam_user_arn_by_snowflake" {
 variable "glue_aws_external_id_by_snowflake" {
   type        = string
   description = "Glue aws external id by snowflake"
-  default     = "EWB70839_SFCRole=2_S3SA211SeSoyPOLVPe5bd9gFeJc=" // Replace with your Glue aws external id by snowflake
+  default     = "EWB70839_SFCRole=2_4ze57eoMmsj+ucOKWYwjG5tMeNY=" // My prev Glue aws external id by snowflake "EWB70839_SFCRole=2_S3SA211SeSoyPOLVPe5bd9gFeJc="
 }
 
 variable "storage_aws_external_id_by_snowflake" {
   type        = string
   description = "Storage aws external id by snowflake"
-  default     = "EWB70839_SFCRole=2_KVuxExCMl+ij8J9yPPjT47c24dc=" // Replace with your Storage aws external id by snowflake
+  default     = "EWB70839_SFCRole=2_iWiFXeLPCXucchKrXyDxmEwo4u4=" // My prev Storage aws external id by snowflake "EWB70839_SFCRole=2_KVuxExCMl+ij8J9yPPjT47c24dc="
 }

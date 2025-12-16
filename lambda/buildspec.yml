@@ -4,7 +4,7 @@ env:
   variables:
     PROJECT_NAME: "pipeline-weather-data" ## name of project
     PATH_SCRIPT: "AWS/pipeline-weather-data/lambda" ## path to the code
-    BUCKET_NAME: "weather-datalake-projects-scripts" ## bucket os scripts 
+    BUCKET_NAME: "weather-datalake-projects-scripts-01" ## bucket os scripts 
     LAMBDA_FUNCTION_NAME: "get_api_weather_data_lambda" # Add Lambda function name as variable
     LAMBDA_RUNTIME: "python3.11"  # Example runtime, adjust as needed
     LAMBDA_HANDLER: "get-data-api.lambda_handler" # Example handler, adjust as needed

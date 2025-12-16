@@ -59,7 +59,7 @@ async def _async_lambda_handler(event, context):  # Define an *async* function f
     """
     Asynchronous part of the lambda handler to fetch weather data and send to S3.
     """
-    s3_bucket_name = "weather-datalake-projects"
+    s3_bucket_name = "weather-datalake-projects-01"
     project_pipeline_name = "pipeline-weather-data"
     database_name = "warehouse_weather_data"
 

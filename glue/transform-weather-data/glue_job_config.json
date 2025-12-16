@@ -1,15 +1,15 @@
 {
-    "Role": "arn:aws:iam::545009864275:role/glue_role",
+    "Role": "arn:aws:iam::881786084229:role/glue_role",
     "Command": {
         "Name": "glueetl",
-        "ScriptLocation": "s3://weather-datalake-projects-scripts/pipeline-weather-data/glue/transform-weather-data/main.py"
+        "ScriptLocation": "s3://weather-datalake-projects-scripts-01/pipeline-weather-data/glue/transform-weather-data/main.py"
     },
     "DefaultArguments": {
-        "--TempDir": "s3://weather-datalake-projects-scripts/pipeline-weather-data/tmp/",
+        "--TempDir": "s3://weather-datalake-projects-scripts-01/pipeline-weather-data/tmp/",
         "--job-bookmark-option": "job-bookmark-enable",
         "--job-language": "python",
         "--enable-metrics": "",
-        "--extra-py-files": "s3://weather-datalake-projects-scripts/pipeline-weather-data/glue/transform-weather-data/transformations.py",
+        "--extra-py-files": "s3://weather-datalake-projects-scripts-01/pipeline-weather-data/glue/transform-weather-data/transformations.py",
         "--enable-continuous-cloudwatch-log": "true",
         "--etl-enable-container-telemetry-collection": "true",
         "--datalake-formats": "iceberg",

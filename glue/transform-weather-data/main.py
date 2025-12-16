@@ -14,7 +14,7 @@ import boto3
 # Convert JSON schema to Spark StructType
 def parse_schema(table_name: str, project_name:str):
 
-    bucket_name = "weather-datalake-projects-scripts"
+    bucket_name = "weather-datalake-projects-scripts-01"
     file_key = f"{project_name}/glue/transform-weather-data/schemas/{table_name}.json"
     s3_client = boto3.client('s3')
 
@@ -67,7 +67,7 @@ def create_table_if_not_exists(spark: SparkSession, dict_tables_info: str , weat
     return True
 
 
-bucket_name = "weather-datalake-projects"
+bucket_name = "weather-datalake-projects-01"
 project_name = "pipeline-weather-data"
 database_name = "warehouse_weather_data"
 dict_tables_info = {

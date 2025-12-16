@@ -1,9 +1,9 @@
 resource "aws_s3_bucket" "weather_datalake" {
-  bucket = "weather-datalake-projects"
+  bucket = "weather-datalake-projects-01"
   force_destroy = true
 
   tags = {
-    Name        = "weather-datalake-projects"
+    Name        = "weather-datalake-projects-01"
     Environment = "Dev"
   }
 
@@ -59,11 +59,11 @@ resource "aws_s3_object" "dim_locations" {
 # ----------------------------------------------------------------------------------
 
 resource "aws_s3_bucket" "weather_datalake_scripts" {
-  bucket = "weather-datalake-projects-scripts"
+  bucket = "weather-datalake-projects-scripts-01"
   force_destroy = true
 
   tags = {
-    Name        = "weather-datalake-projects-scripts"
+    Name        = "weather-datalake-projects-scripts-01"
     Environment = "Dev"
   }
 }

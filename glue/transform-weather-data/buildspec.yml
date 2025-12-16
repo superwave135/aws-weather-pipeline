@@ -4,13 +4,13 @@ env:
   variables:
     PROJECT_NAME: "pipeline-weather-data"
     GLUE_JOB_NAME: "transform-weather-data"  
-    BUCKET_NAME: "weather-datalake-projects-scripts"
+    BUCKET_NAME: "weather-datalake-projects-scripts-01"
     
 phases:
   pre_build:
     commands:
       - echo Uploading the script to S3...
-      - export PATH_SCRIPT="AWS/pipeline-weather-data/glue/$GLUE_JOB_NAME"
+      - export PATH_SCRIPT="pipeline-weather-data/glue/$GLUE_JOB_NAME"
       - aws s3 cp --recursive $PATH_SCRIPT s3://$BUCKET_NAME/$PROJECT_NAME/glue/$GLUE_JOB_NAME
 
   build:

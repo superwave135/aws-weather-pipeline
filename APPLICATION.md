@@ -98,7 +98,7 @@ Wait for my instruction before reply!
 │                          DATA LAKE - RAW ZONE                               │
 │                                                                             │
 │  ┌────────────────────────────────────────────────────────────────────┐     │
-│  │              Amazon S3: weather-datalake-projects/                 │     │
+│  │              Amazon S3: weather-datalake-projects-01/              │     │
 │  │                    pipeline-weather-data/staging/                  │     │
 │  │                                                                    │     │
 │  │  ├── forecast_data/                                                │     │
@@ -155,7 +155,7 @@ Wait for my instruction before reply!
 │                    DATA LAKE - WAREHOUSE ZONE                               │
 │                                                                             │
 │  ┌────────────────────────────────────────────────────────────────────┐     │
-│  │              Amazon S3: weather-datalake-projects/                 │     │
+│  │              Amazon S3: weather-datalake-projects-01/              │     │
 │  │                pipeline-weather-data/warehouse/                    │     │
 │  │                  warehouse_weather_data.db/                        │     │
 │  │                                                                    │     │

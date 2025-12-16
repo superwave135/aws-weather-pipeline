@@ -15,18 +15,18 @@ from airflow.utils.task_group import TaskGroup
 
 
 def generate_list_location_dates_to_collect(aws_conn_id, batch_size):
-    bucket_name = "weather-datalake-projects"
+    bucket_name = "weather-datalake-projects-01"
     project_name = "pipeline-weather-data"
     database_name = "warehouse_weather_data"
     today_date = str(datetime.now().date())
-    initial_date = "2024-04-01" # if we don't have data
+    initial_date = "2025-09-01" # if we don't have data
 
 
     conn_aws = BaseHook.get_connection(aws_conn_id)
 
     aws_session = BaseSessionFactory(conn=conn_aws).create_session()
 
-    s3_bucket_name= "weather-datalake-projects"
+    s3_bucket_name= "weather-datalake-projects-01"
     project_pipeline_name = "pipeline-weather-data"
     database_name = "warehouse_weather_data"
     s3_output_tmp = f's3://{bucket_name}/{project_name}/tmp'
@@ -172,7 +172,7 @@ def generate_list_location_dates_to_collect(aws_conn_id, batch_size):
 
 def create_or_update_dim_locations_table(aws_conn_id):
     
-    bucket_name = "weather-datalake-projects"
+    bucket_name = "weather-datalake-projects-01"
     project_name = "pipeline-weather-data"
     database_name = "warehouse_weather_data"
 
@@ -180,7 +180,7 @@ def create_or_update_dim_locations_table(aws_conn_id):
 
     aws_session = BaseSessionFactory(conn=conn_aws).create_session()
 
-    s3_bucket_name= "weather-datalake-projects"
+    s3_bucket_name= "weather-datalake-projects-01"
     database_name = "warehouse_weather_data"
     table_location =f"s3://{bucket_name}/{project_name}/warehouse/warehouse_weather_data.db/dim_locations"
     
@@ -210,7 +210,7 @@ def create_or_update_dim_locations_table(aws_conn_id):
 default_args = {
     'owner': 'airflow',
     'depends_on_past': False,
-    'start_date': datetime(2023, 1, 1),
+    'start_date': datetime(2025, 10, 1),
     'retries': 0, 
 }
 

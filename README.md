@@ -60,7 +60,7 @@ The pipeline follows this architecture:
 
 ### **S3 Structure:**
 ```plaintext
-s3://weather-datalake-projects/
+s3://weather-datalake-projects-01/
   ├── pipeline-weather-data/
   │   ├── staging/
   │   │   ├── forecast_data/{location_id}.json

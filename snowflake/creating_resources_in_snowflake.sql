@@ -12,9 +12,9 @@ CREATE OR REPLACE CATALOG INTEGRATION glueCatalog_WarehouseWeatherData
   CATALOG_SOURCE = GLUE
   CATALOG_NAMESPACE = 'warehouse_weather_data'
   TABLE_FORMAT = ICEBERG
-  GLUE_AWS_ROLE_ARN = 'arn:aws:iam::xxxxxxxxxxxx:role/snowflake_service_role'
-  GLUE_CATALOG_ID = 'xxxxxxxxxxxx'
-  GLUE_REGION = 'us-east-1'
+  GLUE_AWS_ROLE_ARN = 'arn:aws:iam::881786084229:role/snowflake_service_role'
+  GLUE_CATALOG_ID = '881786084229'
+  GLUE_REGION = 'ap-southeast-1'
   ENABLED = TRUE
   REFRESH_INTERVAL_SECONDS = 600;
 
@@ -29,8 +29,8 @@ CREATE OR REPLACE EXTERNAL VOLUME warehouse_weather_data_vol
             (
                NAME = 's3_warehouse_weather_data.db'
                STORAGE_PROVIDER= 'S3'
-               STORAGE_BASE_URL = 's3://weather-datalake-projects/pipeline-weather-data/warehouse/warehouse_weather_data.db/'
-               STORAGE_AWS_ROLE_ARN='arn:aws:iam::xxxxxxxxxxxx:role/snowflake_service_role'
+               STORAGE_BASE_URL = 's3://weather-datalake-projects-01/pipeline-weather-data/warehouse/warehouse_weather_data.db/'
+               STORAGE_AWS_ROLE_ARN='arn:aws:iam::881786084229:role/snowflake_service_role'
             )
         )
     ALLOW_WRITES=FALSE

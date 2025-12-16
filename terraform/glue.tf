@@ -15,7 +15,7 @@ resource "aws_glue_catalog_table" "dim_locations" {
   }
 
   storage_descriptor {
-    location = "s3://weather-datalake-projects/${var.pipeline_name}/warehouse/warehouse_weather_data.db/dim_locations/" 
+    location = "s3://weather-datalake-projects-01/${var.pipeline_name}/warehouse/warehouse_weather_data.db/dim_locations/" 
 
     columns {
       name = "country"
