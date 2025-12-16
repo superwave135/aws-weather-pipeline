@@ -4,7 +4,18 @@ resource "aws_glue_catalog_database" "warehouse_weather_data" {
 
 
 resource "aws_glue_catalog_table" "dim_locations" {
-  database_name = aws_glue_catalog_database.warehouse_weather_data.name # Reference the database name from the database resource
+  # database_name = aws_glue_catalog_database.warehouse_weather_data.name # Reference the database name from the database resource
+  # name          = "dim_locations"
+  # table_type    = "EXTERNAL_TABLE"
+
+  # Fix the Glue Table Dependency Issue
+  depends_on = [
+    aws_s3_bucket.weather_datalake,
+    aws_s3_bucket_ownership_controls.weather_datalake,
+    aws_s3_bucket_acl.weather_datalake
+  ]
+
+  database_name = aws_glue_catalog_database.warehouse_weather_data.name
   name          = "dim_locations"
   table_type    = "EXTERNAL_TABLE"
 
