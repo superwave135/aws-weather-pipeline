@@ -27,7 +27,7 @@ phases:
       - echo "Zipping the folder..."
       - cd $PATH_SCRIPT
       - zip -q -r lambda.zip . # Zip the current directory ($PATH_SCRIPT) including dependencies
-      - cd ../../.. #return to root folder
+      - cd .. #return to root folder
       - echo $(ls $PATH_SCRIPT) # List directory contents
 
   build:
