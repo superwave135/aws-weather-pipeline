@@ -54,5 +54,5 @@ resource "aws_glue_catalog_table" "dim_locations" {
     }
   }
 
-  depends_on = [aws_glue_catalog_database.warehouse_weather_data] # Explicit dependency on the database
+  # depends_on = [aws_glue_catalog_database.warehouse_weather_data] # Explicit dependency on the database
 }
