@@ -1,0 +1,6 @@
+# Terraform files - MUST be ignored
+terraform/.terraform/              # Provider plugins and modules (large, auto-downloaded)
+terraform/.terraform.lock.hcl      # Lock file (optional to commit, but often ignored)
+terraform/terraform.tfstate        # State file - CONTAINS SENSITIVE DATA (passwords, keys, ARNs)
+terraform/terraform.tfstate.backup # Backup state - ALSO SENSITIVE
+terraform/*.tfstate.*              # Any state backups with timestamps
