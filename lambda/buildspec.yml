@@ -3,14 +3,14 @@ version: 0.2
 env:
   variables:
     PROJECT_NAME: "pipeline-weather-data" ## name of project
-    PATH_SCRIPT: "AWS/pipeline-weather-data/lambda" ## path to the code
+    PATH_SCRIPT: "pipeline-weather-data/lambda" ## path to the code
     BUCKET_NAME: "weather-datalake-projects-scripts-01" ## bucket os scripts 
     LAMBDA_FUNCTION_NAME: "get_api_weather_data_lambda" # Add Lambda function name as variable
     LAMBDA_RUNTIME: "python3.11"  # Example runtime, adjust as needed
     LAMBDA_HANDLER: "get-data-api.lambda_handler" # Example handler, adjust as needed
     LAMBDA_MEMORY_SIZE: 512      # Example memory size in MB
     LAMBDA_TIMEOUT: 900          # Example timeout in seconds
-    LAMBDA_ROLE: "arn:aws:iam::xxxxxxxxxxxx:role/lambda-execution-role" # Replace with your Lambda execution role ARN
+    LAMBDA_ROLE: "arn:aws:iam::881786084229:role/lambda-execution-role" # Replace with your Lambda execution role ARN
 
 
 phases:
