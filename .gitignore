@@ -4,3 +4,10 @@ terraform/.terraform.lock.hcl      # Lock file (optional to commit, but often ig
 terraform/terraform.tfstate        # State file - CONTAINS SENSITIVE DATA (passwords, keys, ARNs)
 terraform/terraform.tfstate.backup # Backup state - ALSO SENSITIVE
 terraform/*.tfstate.*              # Any state backups with timestamps
+
+# Additional, more general Terraform ignores
+*.tfvars                           # Variable definitions often contain secrets
+*.tfvars.json                      # JSON tfvars
+*.tfstate*                         # Any tfstate files anywhere (including backups)
+.terraform/                         # Terraform working directory at repo root
+.terraform.lock.hcl                # Lock file at repo root
