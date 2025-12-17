@@ -10,8 +10,10 @@ phases:
   pre_build:
     commands:
       - echo Uploading the script to S3...
-      - export PATH_SCRIPT="pipeline-weather-data/glue/$GLUE_JOB_NAME"
+      - export PATH_SCRIPT="glue/$GLUE_JOB_NAME"  # Changed this line
       - aws s3 cp --recursive $PATH_SCRIPT s3://$BUCKET_NAME/$PROJECT_NAME/glue/$GLUE_JOB_NAME
+      - echo Files uploaded to S3
+      - aws s3 ls s3://$BUCKET_NAME/$PROJECT_NAME/glue/$GLUE_JOB_NAME/  # Verify upload
 
   build:
     commands:
