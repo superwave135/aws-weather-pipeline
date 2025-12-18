@@ -5,6 +5,13 @@ terraform/terraform.tfstate        # State file - CONTAINS SENSITIVE DATA (passw
 terraform/terraform.tfstate.backup # Backup state - ALSO SENSITIVE
 terraform/*.tfstate.*              # Any state backups with timestamps
 
+# Terraform
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+*.tfstate.backup
+.terraform.lock.hcl  # optional - some teams commit this, others don't
+
 # Additional, more general Terraform ignores
 *.tfvars                           # Variable definitions often contain secrets
 *.tfvars.json                      # JSON tfvars
@@ -27,6 +34,12 @@ __pycache__/
 *$py.class
 .env
 venv/
+# Terraform
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+*.tfstate.backup
+
 # Terraform
 **/.terraform/*
 *.tfstate
