@@ -11,3 +11,24 @@ terraform/*.tfstate.*              # Any state backups with timestamps
 *.tfstate*                         # Any tfstate files anywhere (including backups)
 .terraform/                         # Terraform working directory at repo root
 .terraform.lock.hcl                # Lock file at repo root
+
+# Airflow
+airflow/logs/
+airflow/*.pid
+airflow/*.err
+airflow/*.log
+airflow/airflow.db
+airflow/airflow.cfg  # if you have local overrides
+airflow/webserver_config.py  # if you have local overrides
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.env
+venv/
+# Terraform
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+*.tfstate.backup
