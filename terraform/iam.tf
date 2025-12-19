@@ -28,7 +28,8 @@ resource "aws_iam_policy" "glue_service_role_policy" {
         ]
         Effect = "Allow"
         Resource = [
-          "*" # Replace with your S3 scripts bucket ARN
+          "arn:aws:s3:::weather-datalake-projects-01",
+          "arn:aws:s3:::weather-datalake-projects-01/*"
         ]
       },
       {
@@ -90,7 +91,10 @@ resource "aws_iam_policy" "lambda_policy" {
         "Action" : [
           "s3:*"
         ],
-        "Resource" : "*"
+        "Resource" :  [
+          "arn:aws:s3:::weather-datalake-projects-01",
+          "arn:aws:s3:::weather-datalake-projects-01/*"
+        ]
       },
       {
         "Effect" : "Allow",
@@ -269,7 +273,8 @@ resource "aws_iam_policy" "snowflake_service_role_policy" {
         ]
         Effect = "Allow"
         Resource = [
-          "*" # Replace with your S3 scripts bucket ARN
+          "arn:aws:s3:::weather-datalake-projects-01",
+          "arn:aws:s3:::weather-datalake-projects-01/*"
         ]
       },
       {
