@@ -32,6 +32,20 @@ resource "aws_iam_policy" "glue_service_role_policy" {
           "arn:aws:s3:::weather-datalake-projects-01/*"
         ]
       },
+      # ✅ ADD THIS NEW BLOCK - Access to scripts bucket
+      {
+        Action = [
+          "s3:GetObject",
+          "s3:ListBucket",
+          "s3:PutObject",
+          "s3:DeleteObject"
+        ]
+        Effect = "Allow"
+        Resource = [
+          "arn:aws:s3:::weather-datalake-projects-scripts-01",
+          "arn:aws:s3:::weather-datalake-projects-scripts-01/*"
+        ]
+      },
       {
         Action = [
           "glue:*"
