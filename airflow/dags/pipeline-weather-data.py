@@ -22,7 +22,7 @@ def generate_list_location_dates_to_collect(aws_conn_id, batch_size):
     project_name = "pipeline-weather-data"
     database_name = "warehouse_weather_data"
     today_date = str(datetime.now().date())
-    initial_date = "2025-09-01"  # if we don't have data
+    initial_date = "2026-01-01"  # if we don't have data
 
     conn_aws = BaseHook.get_connection(aws_conn_id)
     aws_session = BaseSessionFactory(conn=conn_aws).create_session()
@@ -86,10 +86,14 @@ def generate_list_location_dates_to_collect(aws_conn_id, batch_size):
             df_location_and_dates["max_date_collected"] = df_location_and_dates["max_date_collected"].fillna(initial_date)
             
             if key == "actual":
-                # for actual data I need to use always the complete month for aggregations
-                df_location_and_dates["start_date"] = df_location_and_dates['max_date_collected'].dt.to_period('M').dt.to_timestamp()
-                df_location_and_dates["start_date"] = df_location_and_dates["start_date"].dt.date
-                df_location_and_dates["start_date"] = df_location_and_dates["start_date"].astype(str)
+                # OLD CODE - tries to get whole month
+                # df_location_and_dates["start_date"] = df_location_and_dates['max_date_collected'].dt.to_period('M').dt.to_timestamp()
+                # df_location_and_dates["start_date"] = df_location_and_dates["start_date"].dt.date
+                # df_location_and_dates["start_date"] = df_location_and_dates["start_date"].astype(str)
+                # df_location_and_dates["end_date"] = today_date
+                
+                # NEW CODE - only get today (free tier limitation)
+                df_location_and_dates["start_date"] = today_date  # ✅ Today only
                 df_location_and_dates["end_date"] = today_date
             else:
                 df_location_and_dates["start_date"] = today_date
@@ -290,7 +294,7 @@ def process_all_lambda_invocations(weather_type: str, aws_conn_id: str, api_toke
 default_args = {
     'owner': 'airflow',
     'depends_on_past': False,
-    'start_date': datetime(2025, 10, 1),
+    'start_date': datetime(2026, 1, 1),
     'retries': 1,
     'retry_delay': timedelta(minutes=5),
 }
