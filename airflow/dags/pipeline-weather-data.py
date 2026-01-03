@@ -22,7 +22,8 @@ def generate_list_location_dates_to_collect(aws_conn_id, batch_size):
     project_name = "pipeline-weather-data"
     database_name = "warehouse_weather_data"
     today_date = str(datetime.now().date())
-    initial_date = "2026-01-01"  # if we don't have data
+    # initial_date = "2026-01-01"  # if we don't have data
+    initial_date = today_date
 
     conn_aws = BaseHook.get_connection(aws_conn_id)
     aws_session = BaseSessionFactory(conn=conn_aws).create_session()
