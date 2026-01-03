@@ -190,7 +190,3 @@ The image below has an example of visualization created with the output data usi
 
 ![dag_airflow](./src/example_viz_tableau.png)
 
-## Author
-Claudio César
-
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Profile-blue?logo=linkedin)](https://www.linkedin.com/in/claudio-c%C3%A9sar-506961164/)
